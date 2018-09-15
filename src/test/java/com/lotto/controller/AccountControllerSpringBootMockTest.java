@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
-import org.springframework.boot.test.json.JsonbTester;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -37,9 +35,10 @@ public class AccountControllerSpringBootMockTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andReturn()
                 .getResponse();
-        assertEquals(HttpStatus.OK.value(),response.getStatus());
+        assertEquals("Status should be 200",HttpStatus.NOT_FOUND,response.getStatus());
         AccountResponse expected = new AccountResponse("user","pass",10000);
-        assertEquals(jsonTester.write(expected)
+        assertEquals("Object should be equals"
+                ,jsonTester.write(expected)
                 .getJson()
                 ,response.getContentAsString());
     }
