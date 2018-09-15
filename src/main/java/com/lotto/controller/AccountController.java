@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import java.util.Optional;
 
 @RestController
@@ -31,5 +32,13 @@ public class AccountController {
         }
         throw new MyAccountNotFoundException(
                 String.format("Account id=[%d] not found",id));
+    }
+
+
+    @PostConstruct
+    public void initData(){
+        Account account = new Account("user","pass",10000);
+        accountRepository.save(account);
+
     }
 }

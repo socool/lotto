@@ -18,6 +18,9 @@ public class Account {
     private String email;
     private int salary;
 
+    public Account() {
+    }
+
     public Account(String username, String password, Integer salary) {
        this.setUsername(username);
        this.setPassword(password);
