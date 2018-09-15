@@ -29,7 +29,7 @@ public class AccountControllerSpringBootMockTest {
     private JacksonTester<AccountResponse> jsonTester;
 
     @Test
-    public void getById() throws Exception {
+    public void getByIdShouldReturnValidResponse() throws Exception {
         JacksonTester.initFields(this,new ObjectMapper());
         //MockMvcRequestBuilders.get
         MockHttpServletResponse response = mockMvc
