@@ -5,8 +5,7 @@ import com.lotto.controller.response.AccountResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,9 +17,8 @@ import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-@AutoConfigureMockMvc
-public class AccountControllerSpringBootMockTest {
+@WebMvcTest(AccountController.class)
+public class AccountControllerWebMvcTest {
     @Autowired
     private MockMvc mockMvc;
 
@@ -39,7 +37,8 @@ public class AccountControllerSpringBootMockTest {
         AccountResponse expected = new AccountResponse("user","pass",10000);
         assertEquals("Object should be equals"
                 ,jsonTester.write(expected)
-                .getJson()
+                        .getJson()
                 ,response.getContentAsString());
     }
+
 }
