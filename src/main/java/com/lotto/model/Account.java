@@ -1,28 +1,43 @@
 package com.lotto.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Account {
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
     private String firstName;
     private String lastName;
     private String username;
     private String password;
     private String email;
-    private Integer salary;
+    private int salary;
 
-    public Integer getSalary() {
-        return salary;
+    public Account(String username, String password, Integer salary) {
+       this.setUsername(username);
+       this.setPassword(password);
+       this.setSalary(salary);
     }
 
-    public void setSalary(Integer salary) {
-        this.salary = salary;
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 
     public String getFirstName() {
