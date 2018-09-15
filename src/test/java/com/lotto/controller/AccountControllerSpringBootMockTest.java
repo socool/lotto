@@ -1,11 +1,14 @@
 package com.lotto.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lotto.controller.response.AccountResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.boot.test.json.JsonbTester;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -23,8 +26,11 @@ public class AccountControllerSpringBootMockTest {
     @Autowired
     private MockMvc mockMvc;
 
+    private JacksonTester<AccountResponse> jsonTester;
+
     @Test
     public void getById() throws Exception {
+        JacksonTester.initFields(this,new ObjectMapper());
         //MockMvcRequestBuilders.get
         MockHttpServletResponse response = mockMvc
                 .perform(get("/account/1")
@@ -32,5 +38,9 @@ public class AccountControllerSpringBootMockTest {
                 .andReturn()
                 .getResponse();
         assertEquals(HttpStatus.OK.value(),response.getStatus());
+        AccountResponse expected = new AccountResponse("user","pass",10000);
+        assertEquals(jsonTester.write(expected)
+                .getJson()
+                ,response.getContentAsString());
     }
 }
