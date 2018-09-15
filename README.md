@@ -1,4 +1,5 @@
-* Module Structure
+## Module Structure
+
 ```
 main
     module1
@@ -12,4 +13,9 @@ main
         + repository
         + model
 ```
+
+## Scope
+
+- "test" is using for test but not deploy
+- "provider" is using in project but not deploy
 
