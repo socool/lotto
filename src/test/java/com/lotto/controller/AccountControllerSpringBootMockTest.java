@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -23,6 +24,7 @@ public class AccountControllerSpringBootMockTest {
 
     @Test
     public void getById() throws Exception {
+        //MockMvcRequestBuilders.get
         MockHttpServletResponse response = mockMvc
                 .perform(get("/account/1")
                         .accept(MediaType.APPLICATION_JSON))
