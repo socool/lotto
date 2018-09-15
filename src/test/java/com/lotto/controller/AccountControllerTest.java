@@ -31,5 +31,9 @@ public class AccountControllerTest {
         ResponseEntity<AccountResponse> response = this.testRestTemplate.getForEntity("/account/1",AccountResponse.class);
         assertEquals(HttpStatus.OK,response.getStatusCode());
 
+        AccountResponse expected = new AccountResponse("user","pass",10000);
+        //should be implement equals and hashCode
+        assertEquals(expected,response.getBody());
+
     }
 }

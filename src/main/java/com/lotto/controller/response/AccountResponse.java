@@ -1,6 +1,7 @@
 package com.lotto.controller.response;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class AccountResponse {
     private String userName;
@@ -42,5 +43,30 @@ public class AccountResponse {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        super.toString();
+        return "AccountResponse{" +
+                "userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AccountResponse that = (AccountResponse) o;
+        return salary == that.salary &&
+                Objects.equals(userName, that.userName) &&
+                Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, password, salary);
     }
 }
