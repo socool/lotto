@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  * Default SpringBootTest.WebEnvironment = MOCK
+ * Integration test with start web server
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
