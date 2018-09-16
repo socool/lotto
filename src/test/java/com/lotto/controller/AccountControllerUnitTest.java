@@ -33,6 +33,7 @@ public class AccountControllerUnitTest {
 
         //Stub
         Account account = new Account("user","pass",10000);
+
         given(repository.findById(1)).willReturn(Optional.of(account));
 
         accountController = new AccountController(repository);
