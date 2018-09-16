@@ -48,6 +48,7 @@ public class AccountControllerErrorTest {
         AccountResponse expected = new AccountResponse("user","pass",10000);
         assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
         assertEquals("Data not found",response.getBody().getMessage());
+        // if can't check dynamic data just check not null value
         assertNotNull(response.getBody().getTimestamp());
 
     }
