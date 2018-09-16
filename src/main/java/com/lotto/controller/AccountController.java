@@ -17,6 +17,10 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
+    public AccountController(AccountRepository repository){
+        this.accountRepository = repository;
+    }
+
     /**
      * Spring handle runtime exception for us
      * @param id
