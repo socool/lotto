@@ -6,6 +6,9 @@ public class ResponseException {
     private String message;
     private Date timestamp;
 
+    public ResponseException() {
+    }
+
     public String getMessage() {
         return message;
     }
